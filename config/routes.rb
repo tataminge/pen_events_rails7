@@ -14,13 +14,13 @@ namespace :public do
 end
 
 
-#会員
+#会員用
   devise_for :members, skip: [:passwords],controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-# 管理者
+# 管理者用
   devise_for :admins, skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
 }
