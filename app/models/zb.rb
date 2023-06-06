@@ -1,0 +1,2 @@
+class Zb < ApplicationRecord
+end
