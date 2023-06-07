@@ -72,3 +72,9 @@ group :test do
 end
 
 gem "devise"
+
+gem 'bootstrap', '~> 5.0.2'
+
+gem 'jquery-rails'
+
+gem 'kaminari','~> 1.2.1'
