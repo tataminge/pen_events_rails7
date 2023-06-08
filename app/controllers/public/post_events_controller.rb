@@ -9,13 +9,26 @@ class Public::PostEventsController < ApplicationController
 
 
   def new
-    @post_event = Post_event.new
+    @post_event = PostEvent.new
   end
+
+  def create
+
+  end
+
 
   def edit
   end
 
   def update
   end
+
+  private
+
+  # def post_event_params
+    # params.require(:post_event).permit(:start_date, :end_date, :body, :url,  zb_ids: [])
+  # end
+
+
 
 end
