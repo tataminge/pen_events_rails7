@@ -1,4 +1,6 @@
-<h2>Sign up</h2>
+<div class="container mt-5 mb-5">
+
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -11,7 +13,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -22,8 +24,15 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+        <h3>既に登録済みの方</h3>
+        <%= link_to "こちら",new_member_session_path %>
+      　からログインしてください。
+
+
+<%#= render "public/shared/links" %>
+
+</div>

@@ -1,4 +1,4 @@
-class Public::EventsController < ApplicationController
+class Public::PostEventsController < ApplicationController
   def show
   end
 

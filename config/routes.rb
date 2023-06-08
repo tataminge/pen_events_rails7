@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :members, only: [:show, :edit]
-    resources :events, only: [:show, :index, :new, :edit]do
+    resources :post_events, only: [:show, :index, :new, :edit]do
         collection do
           post 'confirm'
           get 'complete'
@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: "homes#top"
     resources :members, only: [:index, :show]
-    resources :genres, only: [:index]
-    get 'homes/top'
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :places, only: [:edit, :create, :update]
   end
 
 

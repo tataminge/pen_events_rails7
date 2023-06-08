@@ -6,11 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/4f560c8194.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
+  <header>
+     <%= render "layouts/header" %>
+  </header>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <%= render "layouts/footer" %>
+  </footer>
+
+
+
 </html>
