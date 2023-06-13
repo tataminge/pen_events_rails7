@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_121745) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_050234) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -81,11 +81,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_121745) do
     t.integer "genre_id", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
-    t.string "body", null: false
+    t.text "body", null: false
     t.string "url", null: false
     t.integer "member_id", null: false
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "post_zbtag_relations", force: :cascade do |t|
+    t.integer "post_event_id", null: false
+    t.integer "zb_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_event_id"], name: "index_post_zbtag_relations_on_post_event_id"
+    t.index ["zb_id"], name: "index_post_zbtag_relations_on_zb_id"
   end
 
   create_table "zbs", force: :cascade do |t|
@@ -96,4 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_121745) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_zbtag_relations", "post_events"
+  add_foreign_key "post_zbtag_relations", "zbs"
 end

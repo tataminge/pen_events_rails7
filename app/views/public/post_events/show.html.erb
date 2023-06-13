@@ -1,2 +1,63 @@
-<h1>Public::Events#show</h1>
-<p>Find me in app/views/public/events/show.html.erb</p>
+<div class="container mt-5 mb-5">
+HOME > ジャンル > <%# post_event.name %>
+
+<% @post_event.each do |post_event| %>
+ <div class="row">
+  <div class="col-4">
+    <% if post_event.image.attached? %>
+      <%= image_tag post_event.image, size: "300x400" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "300x400" %>
+    <% end %>
+  </div>
+
+  <div class="col-4">
+    <table class="table table-borderless">
+    <tr>
+      <th scope="row"></th>
+      <td><%# post_event.name %></td>
+      <td>
+        <i class="fa-regular fa-heart fa-xl"></i>
+
+        <i class="fa-solid fa-heart fa-xl" style="color: #f4a4c0;"></i>
+
+        <i class="fa-brands fa-twitter fa-xl" style="color: #74a7fe;"></i>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">日程</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">場所</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">詳細</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-primary me-md-2" type="button">編集</button>
+        <button class="btn btn-outline-primary" type="button">削除</button>
+        </di>
+      </td>
+    </tr>
+
+
+
+
+    </table>
+  </div>
+
+
+
+
+
+
+
+<% end %>
+  </div>
+</div>
