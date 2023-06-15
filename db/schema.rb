@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_050234) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_080319) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_050234) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "post_event_id", null: false
+    t.integer "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["post_event_id"], name: "index_favorites_on_post_event_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre", null: false
     t.datetime "created_at", null: false
@@ -89,6 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_050234) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_placetag_relations", force: :cascade do |t|
+    t.integer "post_event_id", null: false
+    t.integer "place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_post_placetag_relations_on_place_id"
+    t.index ["post_event_id"], name: "index_post_placetag_relations_on_post_event_id"
+  end
+
   create_table "post_zbtag_relations", force: :cascade do |t|
     t.integer "post_event_id", null: false
     t.integer "zb_id", null: false
@@ -106,6 +124,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_050234) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "post_events"
+  add_foreign_key "post_placetag_relations", "places"
+  add_foreign_key "post_placetag_relations", "post_events"
   add_foreign_key "post_zbtag_relations", "post_events"
   add_foreign_key "post_zbtag_relations", "zbs"
 end

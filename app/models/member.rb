@@ -4,6 +4,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :post_events
+  
+  #いいね
+  has_many :post_events, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # メールアドレスバリテーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
